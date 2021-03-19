@@ -13,7 +13,7 @@ const RegisterScreen = () => {
 
   const dispatch = useDispatch();
 
-  const {msgError} = useSelector(state => state.ui);
+  const {msgError, loading} = useSelector(state => state.ui);
 
 
   const [formValues, handleInputChange] = useForm({
@@ -70,7 +70,7 @@ const RegisterScreen = () => {
         <input className="auth__input" type="password" placeholder="Password" name="password" value={password} onChange={handleInputChange} />
         <input className="auth__input" type="password" placeholder="Confirm password" name="password2" value={password2} onChange={handleInputChange} />
 
-        <button type="submit" className="btn btn-primary btn-block mb-5">Register</button>
+        <button type="submit" className="btn btn-primary btn-block mb-5" disabled={loading}>Register</button>
 
 
         <Link to="/auth/login" className="link">Already registered?</Link>

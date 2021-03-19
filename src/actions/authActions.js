@@ -20,12 +20,16 @@ export const startLoginEmailPassword = (email, password) => {
 
 export const startRegisterWithEmailPasswordNameAction = (email, password, name) => {
   return (dispatch) => {
+
+    dispatch(startLoadingAction());
+
     firebase.auth().createUserWithEmailAndPassword(email, password).then( async({user}) => {
       await user.updateProfile({displayName: name});
       dispatch(loginAction(user.uid, user.displayName));
-
+      dispatch(finishLoadingAction());
     }).catch(err => {
       console.log(err);
+      dispatch(finishLoadingAction());
     });
   }
 }
