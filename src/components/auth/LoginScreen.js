@@ -13,7 +13,7 @@ const LoginScreen = () => {
 
   const dispatch = useDispatch();
 
-  const {loading} = useSelector(state => state.ui);
+  const {loading, msgError} = useSelector(state => state.ui);
 
   const [formValues, handleInputChange] = useForm({
     email: 'alex0@gmail.com',
@@ -51,6 +51,15 @@ const LoginScreen = () => {
   return(
     <>
       <h3 className="auth__title">login</h3>
+
+      {
+        msgError && 
+          (
+            <div className="auth__alert-error">
+              {msgError}
+            </div>
+          )
+      }
       
       <form onSubmit={handleLogin}>
         <input className="auth__input" type="text" placeholder="Email" name="email" autoComplete="off" value={email} onChange={handleInputChange} />
