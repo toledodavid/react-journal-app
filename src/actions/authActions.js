@@ -49,3 +49,15 @@ export const loginAction = (uid, displayName) => ({
     displayName
   }
 });
+
+
+export const startLogoutAction = () => {
+  return async(dispatch) => {
+    await firebase.auth().signOut();
+    dispatch(logoutAction());
+  }
+}
+
+export const logoutAction = () => ({
+  type: types.logout
+});
