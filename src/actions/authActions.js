@@ -1,4 +1,5 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
+import Swal from 'sweetalert2';
 import { types } from '../types/types';
 import { finishLoadingAction, startLoadingAction } from './uiActions';
 
@@ -12,8 +13,9 @@ export const startLoginEmailPassword = (email, password) => {
       dispatch(loginAction(user.uid, user.displayName));
       dispatch(finishLoadingAction());
     }).catch(err => {
-      console.log(err);
+      //console.log(err);
       dispatch(finishLoadingAction());
+      Swal.fire('Error', err.message, 'error');
     });
   }
 }
@@ -28,8 +30,9 @@ export const startRegisterWithEmailPasswordNameAction = (email, password, name) 
       dispatch(loginAction(user.uid, user.displayName));
       dispatch(finishLoadingAction());
     }).catch(err => {
-      console.log(err);
+      //console.log(err);
       dispatch(finishLoadingAction());
+      Swal.fire('Error', err.message, 'error');
     });
   }
 }
