@@ -14,8 +14,7 @@ import AuthRouter from './AuthRouter';
 import JournalScreen from '../components/journal/JournalScreen';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import { loadNotes } from '../helpers/loadNotes';
-import { setNotesAction } from '../actions/notesActions';
+import { startLoadingNotesAction } from '../actions/notesActions';
 
 
 
@@ -33,8 +32,7 @@ const AppRouter = () => {
         dispatch(loginAction(user.uid, user.displayName));
         setIsLoggedIn(true);
 
-        const notes = await loadNotes(user.uid);
-        dispatch(setNotesAction(notes));
+        dispatch(startLoadingNotesAction(user.uid));
       } else {
         setIsLoggedIn(false);
       }
