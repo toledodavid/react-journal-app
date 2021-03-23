@@ -1,4 +1,5 @@
 import { db } from '../firebase/firebase-config';
+import { types } from '../types/types';
 
 
 export const startNewEntryNoteAction = () => {
@@ -13,5 +14,15 @@ export const startNewEntryNoteAction = () => {
 
     const documentReference = await db.collection(`${uid}/journal/notes`).add(newNote);
     console.log(documentReference);
+
+    dispatch(activeNoteAction(documentReference.id, newNote));
   }
 }
+
+export const activeNoteAction = (id, note) => ({
+  type: types.noteActive,
+  payload: {
+    id,
+    ...note
+  }
+});
