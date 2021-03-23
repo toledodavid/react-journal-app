@@ -26,3 +26,8 @@ export const activeNoteAction = (id, note) => ({
     ...note
   }
 });
+
+export const setNotesAction = (notes) => ({
+  type: types.notesLoad,
+  payload: notes
+});
