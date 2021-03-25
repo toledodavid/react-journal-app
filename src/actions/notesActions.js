@@ -90,3 +90,18 @@ export const startLoadingImageAction = (file) => {
     Swal.close();
   }
 }
+
+export const startDeletingNoteAction = (idNote) => {
+  return async (dispatch, getState) => {
+    const {uid} = getState().auth;
+
+    await db.doc(`${uid}/journal/notes/${idNote}`).delete();
+
+    dispatch(deleteNoteAction(idNote));
+  }
+}
+
+export const deleteNoteAction = (idNote) => ({
+  type: types.noteDelete,
+  payload: idNote
+});
