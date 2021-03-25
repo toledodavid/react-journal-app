@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 import { types } from '../types/types';
 import { db } from '../firebase/firebase-config';
 import { loadNotes } from '../helpers/loadNotes';
+import { fileUpload } from '../helpers/fileUpload';
 
 
 export const startNewEntryNoteAction = () => {
@@ -67,3 +68,12 @@ export const refreshNoteAction = (idNote, note) => ({
     note
   }
 });
+
+export const startLoadingImageAction = (file) => {
+  return async (dispatch, getState) => {
+    const {active:activeNote} = getState().notes;
+    
+    const fileUrl = await fileUpload(file);
+    console.log(fileUrl);
+  }
+}
