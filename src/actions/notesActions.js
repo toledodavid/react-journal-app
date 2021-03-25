@@ -71,9 +71,22 @@ export const refreshNoteAction = (idNote, note) => ({
 
 export const startLoadingImageAction = (file) => {
   return async (dispatch, getState) => {
-    const {active:activeNote} = getState().notes;
-    
+    const {active:note} = getState().notes;
+
+    Swal.fire({
+      title: 'Uploading',
+      html: 'Please wait...',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
     const fileUrl = await fileUpload(file);
-    console.log(fileUrl);
+
+    note.url = fileUrl;
+    dispatch(startSaveNoteAction(note));
+
+    Swal.close();
   }
 }
