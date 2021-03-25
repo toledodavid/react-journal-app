@@ -19,6 +19,7 @@ export const startNewEntryNoteAction = () => {
     console.log(documentReference);
 
     dispatch(activeNoteAction(documentReference.id, newNote));
+    dispatch(addNewNoteAction(documentReference.id, newNote));
   }
 }
 
@@ -26,6 +27,14 @@ export const activeNoteAction = (id, note) => ({
   type: types.noteActive,
   payload: {
     id,
+    ...note
+  }
+});
+
+export const addNewNoteAction = (idNote, note) => ({
+  type: types.notesAddNewEntry,
+  payload: {
+    id: idNote,
     ...note
   }
 });
