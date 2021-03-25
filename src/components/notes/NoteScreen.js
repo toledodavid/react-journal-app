@@ -35,7 +35,7 @@ const NoteScreen = () => {
 
 
   return(
-    <div className="notes__main-content">
+    <div className="notes__main-content animate__animated animate__fadeIn animate__faster">
 
       <NotesAppBar />
 

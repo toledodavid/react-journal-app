@@ -64,7 +64,7 @@ const RegisterScreen = () => {
           )
       }
       
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} className="animate__animated animate__fadeIn animate__faster">
         <input className="auth__input" type="text" placeholder="Name" name="name" value={name} onChange={handleInputChange} autoComplete="off" />
         <input className="auth__input" type="email" placeholder="Email" name="email" value={email} onChange={handleInputChange} autoComplete="off" />
         <input className="auth__input" type="password" placeholder="Password" name="password" value={password} onChange={handleInputChange} />

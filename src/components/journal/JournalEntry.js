@@ -18,7 +18,7 @@ const JournalEntry = ({id, title, body, date, url}) => {
 
 
   return(
-    <div className="journal__entry pointer" onClick={handleEntryClick}>
+    <div className="journal__entry pointer animate__animated animate__fadeInUp" onClick={handleEntryClick}>
       
       {
         url &&
