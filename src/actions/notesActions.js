@@ -16,7 +16,7 @@ export const startNewEntryNoteAction = () => {
     }
 
     const documentReference = await db.collection(`${uid}/journal/notes`).add(newNote);
-    console.log(documentReference);
+    //console.log(documentReference);
 
     dispatch(activeNoteAction(documentReference.id, newNote));
     dispatch(addNewNoteAction(documentReference.id, newNote));
