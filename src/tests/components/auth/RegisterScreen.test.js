@@ -58,4 +58,28 @@ describe('Tests in <RegisterScreen /> component', () => {
     });
   });
 
+  test('It should show the alert with the error', () => {
+
+    const initState = {
+      auth: {},
+      ui: {
+        loading: false,
+        msgError: 'Email is not valid'
+      }
+    };
+
+    const store = mockStore(initState);
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <MemoryRouter>
+          <RegisterScreen />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    expect(wrapper.find('.auth__alert-error').exists()).toBe(true);
+    expect(wrapper.find('.auth__alert-error').text().trim()).toBe(initState.ui.msgError);
+  });
+
 });
